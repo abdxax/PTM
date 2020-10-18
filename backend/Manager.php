@@ -77,4 +77,11 @@ public function deleteTask($id){
     }
 }
 
+
+public function getAllEmp(){
+    $sql=$this->mg_db->prepare("SELECT * FROM user LEFT JOIN info ON user.email=info.email ");
+    $sql->execute();
+    return $sql;
+}
+
 }

@@ -45,9 +45,12 @@ class login extends DB{
      $sql=$this->login->prepare("SELECT * FROM user WHERE email=? AND pass=? ");
      $sql->execute(array($email,$pass));
      if($sql->rowCount()==1){
+
          foreach ($sql as $s){
              if($s['role']==1){
-
+                 $_SESSION['email']=$email;
+                 $_SESSION['pass']=$pass;
+                 header("location:Admin/index.php");
              }
              else if($s['role']==2){
                  $_SESSION['email']=$email;
@@ -64,6 +67,9 @@ class login extends DB{
 
              }
          }
+     }
+     else{
+         header("location:login.php?msg=error");
      }
     }
 

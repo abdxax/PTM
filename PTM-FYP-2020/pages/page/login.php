@@ -39,7 +39,11 @@ if(isset($_POST['sub'])){
   <div class="card">
     <div class="card-body login-card-body">
       <p class="login-box-msg">Sign in to start your session</p>
-
+              <?php
+              if(isset($_GET['msg'])){
+                  echo '<div class="alert alert-danger text-center">E-mail or Password is not correct </div>';
+              }
+              ?>
       <form  method="post">
         <div class="input-group mb-3">
           <input type="email" name="email" class="form-control" placeholder="Email">
